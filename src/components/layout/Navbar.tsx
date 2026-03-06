@@ -3,16 +3,17 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { DomainIcon } from '../ui/DomainIcon';
 
 const domainLinks = [
-  { name: 'Quality', slug: 'quality', icon: '\u{1F6E1}\uFE0F' },
-  { name: 'Regulatory Affairs', slug: 'regulatory', icon: '\u{1F4CB}' },
-  { name: 'Clinical Development', slug: 'clinical', icon: '\u{1F52C}' },
-  { name: 'Manufacturing', slug: 'manufacturing', icon: '\u{1F3ED}' },
-  { name: 'Safety & Pharmacovigilance', slug: 'safety', icon: '\u2695\uFE0F' },
-  { name: 'Medical Affairs', slug: 'medical-affairs', icon: '\u{1F50D}' },
-  { name: 'Cybersecurity & TPRM', slug: 'cybersecurity', icon: '\u{1F512}' },
-  { name: 'Corporate Functions', slug: 'corporate', icon: '\u{1F3E2}' },
+  { name: 'Quality', slug: 'quality' },
+  { name: 'Regulatory Affairs', slug: 'regulatory' },
+  { name: 'Clinical Development', slug: 'clinical' },
+  { name: 'Manufacturing', slug: 'manufacturing' },
+  { name: 'Safety & Pharmacovigilance', slug: 'safety' },
+  { name: 'Medical Affairs', slug: 'medical-affairs' },
+  { name: 'Cybersecurity & TPRM', slug: 'cybersecurity' },
+  { name: 'Corporate Functions', slug: 'corporate' },
 ];
 
 const navLinks = [
@@ -129,7 +130,7 @@ export function Navbar() {
                             className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-600 transition-colors hover:bg-blue-50 hover:text-blue-700"
                             onClick={() => setDomainsOpen(false)}
                           >
-                            <span className="text-lg">{domain.icon}</span>
+                            <DomainIcon slug={domain.slug} className="w-5 h-5 text-slate-500" />
                             <span className="font-medium">{domain.name}</span>
                           </Link>
                         ))}
@@ -232,7 +233,7 @@ export function Navbar() {
                               setMobileMenuOpen(false);
                             }}
                           >
-                            <span>{domain.icon}</span>
+                            <DomainIcon slug={domain.slug} className="w-5 h-5 text-slate-500" />
                             <span>{domain.name}</span>
                           </Link>
                         ))}

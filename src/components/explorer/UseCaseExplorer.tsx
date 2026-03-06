@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { domains } from '@/data/domains';
 import { Card } from '../ui/Card';
+import { DomainIcon } from '../ui/DomainIcon';
 
 type MaturityFilter = 'all' | 'assistive' | 'generative' | 'predictive';
 
@@ -41,7 +42,7 @@ export function UseCaseExplorer() {
         id: `${domain.slug}-${idx}`,
         domainSlug: domain.slug,
         domainTitle: domain.title,
-        domainIcon: domain.icon,
+        domainSlug: domain.slug,
         domainColor: domain.color,
       }))
     );
@@ -91,7 +92,7 @@ export function UseCaseExplorer() {
                     : `bg-white ${colors.text} border border-slate-200 hover:${colors.bg}`
                 }`}
               >
-                <span className="mr-1.5">{domain.icon}</span>
+                <DomainIcon slug={domain.slug} className="w-4 h-4 mr-1.5" />
                 {domain.title}
               </button>
             );
@@ -201,7 +202,7 @@ export function UseCaseExplorer() {
                         <span
                           className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${colors.bg} ${colors.text}`}
                         >
-                          <span>{uc.domainIcon}</span>
+                          <DomainIcon slug={uc.domainSlug} className="w-4 h-4" />
                           {uc.domainTitle}
                         </span>
                         <svg

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { domains } from '@/data/domains';
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { Card } from '../ui/Card';
+import { DomainIcon } from '../ui/DomainIcon';
 
 const colorMap: Record<string, { border: string; bg: string; text: string }> = {
   blue:   { border: 'border-blue-500',   bg: 'bg-blue-50',   text: 'text-blue-600' },
@@ -48,9 +49,9 @@ export function DomainGrid() {
                     padding="lg"
                   >
                     <div
-                      className={`w-12 h-12 rounded-lg ${colors.bg} flex items-center justify-center text-2xl mb-4 transition-transform duration-300 group-hover:scale-110`}
+                      className={`w-10 h-10 rounded-lg ${colors.bg} ${colors.text} flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110`}
                     >
-                      {domain.icon}
+                      <DomainIcon slug={domain.slug} className="w-5 h-5" />
                     </div>
                     <h3 className="text-lg font-semibold text-slate-900 mb-2">
                       {domain.title}

@@ -2,6 +2,7 @@
 
 import { Domain } from '@/data/domains';
 import { ScrollReveal } from '../ui/ScrollReveal';
+import { DomainIcon } from '../ui/DomainIcon';
 import { useEffect, useRef, useState } from 'react';
 
 const colorClasses: Record<string, { bg: string; text: string; badge: string; border: string }> = {
@@ -147,11 +148,9 @@ export function DomainHero({ domain }: DomainHeroProps) {
           {/* Icon */}
           <ScrollReveal delay={0}>
             <div
-              className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white border ${colors.border} shadow-sm mb-8`}
+              className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-white border ${colors.border} shadow-sm mb-8 ${colors.text}`}
             >
-              <span className="text-4xl" role="img" aria-label={domain.title}>
-                {domain.icon}
-              </span>
+              <DomainIcon slug={domain.slug} className="w-7 h-7" />
             </div>
           </ScrollReveal>
 
