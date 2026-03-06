@@ -67,10 +67,11 @@ export default function DomainPage({ params }: { params: { slug: string } }) {
       <section className="py-16 px-6 bg-slate-50">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
-              Agent Architecture: {domain.deepDive.title}
+            <p className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-2">Deep Dive</p>
+            <h2 className="text-2xl font-bold text-slate-900 mb-3">
+              {domain.deepDive.title}
             </h2>
-            <p className="text-lg text-slate-600 mb-10 max-w-3xl leading-relaxed">
+            <p className="text-base text-slate-600 mb-8 max-w-3xl leading-relaxed">
               {domain.deepDive.overview}
             </p>
           </ScrollReveal>

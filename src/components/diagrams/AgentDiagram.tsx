@@ -26,27 +26,25 @@ export interface AgentDiagramProps {
 /*  Color palette                                                             */
 /* -------------------------------------------------------------------------- */
 
-const colorMap: Record<string, { primary: string; light: string; border: string; text: string }> = {
-  blue:   { primary: '#2563EB', light: '#DBEAFE', border: 'border-blue-300',   text: 'text-blue-700' },
-  indigo: { primary: '#4F46E5', light: '#E0E7FF', border: 'border-indigo-300', text: 'text-indigo-700' },
-  violet: { primary: '#7C3AED', light: '#EDE9FE', border: 'border-violet-300', text: 'text-violet-700' },
-  amber:  { primary: '#D97706', light: '#FEF3C7', border: 'border-amber-300',  text: 'text-amber-700' },
-  rose:   { primary: '#E11D48', light: '#FFE4E6', border: 'border-rose-300',   text: 'text-rose-700' },
-  teal:   { primary: '#0D9488', light: '#CCFBF1', border: 'border-teal-300',   text: 'text-teal-700' },
-  red:    { primary: '#DC2626', light: '#FEE2E2', border: 'border-red-300',    text: 'text-red-700' },
-  slate:  { primary: '#475569', light: '#F1F5F9', border: 'border-slate-300',  text: 'text-slate-700' },
+const colorMap: Record<string, { primary: string; light: string; border: string; text: string; bg: string; lightBg: string }> = {
+  blue:   { primary: '#2563EB', light: '#DBEAFE', border: 'border-blue-300',   text: 'text-blue-700', bg: 'bg-blue-600',   lightBg: 'bg-blue-50' },
+  indigo: { primary: '#4F46E5', light: '#E0E7FF', border: 'border-indigo-300', text: 'text-indigo-700', bg: 'bg-indigo-600', lightBg: 'bg-indigo-50' },
+  violet: { primary: '#7C3AED', light: '#EDE9FE', border: 'border-violet-300', text: 'text-violet-700', bg: 'bg-violet-600', lightBg: 'bg-violet-50' },
+  amber:  { primary: '#D97706', light: '#FEF3C7', border: 'border-amber-300',  text: 'text-amber-700', bg: 'bg-amber-600',  lightBg: 'bg-amber-50' },
+  rose:   { primary: '#E11D48', light: '#FFE4E6', border: 'border-rose-300',   text: 'text-rose-700', bg: 'bg-rose-600',   lightBg: 'bg-rose-50' },
+  teal:   { primary: '#0D9488', light: '#CCFBF1', border: 'border-teal-300',   text: 'text-teal-700', bg: 'bg-teal-600',   lightBg: 'bg-teal-50' },
+  red:    { primary: '#DC2626', light: '#FEE2E2', border: 'border-red-300',    text: 'text-red-700', bg: 'bg-red-600',    lightBg: 'bg-red-50' },
+  slate:  { primary: '#475569', light: '#F1F5F9', border: 'border-slate-300',  text: 'text-slate-700', bg: 'bg-slate-600',  lightBg: 'bg-slate-50' },
 };
 
 /* -------------------------------------------------------------------------- */
 /*  Helpers                                                                   */
 /* -------------------------------------------------------------------------- */
 
-/** Split a label into lines of at most `maxLen` characters for SVG tspan. */
 function wrapText(text: string, maxLen: number): string[] {
   const words = text.split(' ');
   const lines: string[] = [];
   let current = '';
-
   for (const word of words) {
     if (current.length + word.length + 1 > maxLen && current.length > 0) {
       lines.push(current);
@@ -60,29 +58,17 @@ function wrapText(text: string, maxLen: number): string[] {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Inline SVG style (keeps animations co-located with component)             */
+/*  Inline SVG styles                                                         */
 /* -------------------------------------------------------------------------- */
 
 const svgStyles = `
   .agent-node { cursor: pointer; }
   .agent-node:hover .node-circle { filter: brightness(1.08); }
   .agent-node:hover .node-ring   { opacity: 0.5; }
-
-  @keyframes flow-line {
-    to { stroke-dashoffset: -20; }
-  }
-  .flow-line {
-    stroke-dasharray: 5 15;
-    animation: flow-line 1.5s linear infinite;
-  }
-
-  @keyframes pulse-ring-svg {
-    0%   { r: 48; opacity: 0.6; }
-    100% { r: 68; opacity: 0; }
-  }
-  .pulse-ring {
-    animation: pulse-ring-svg 2s ease-out infinite;
-  }
+  @keyframes flow-line { to { stroke-dashoffset: -20; } }
+  .flow-line { stroke-dasharray: 5 15; animation: flow-line 1.5s linear infinite; }
+  @keyframes pulse-ring-svg { 0% { r: 48; opacity: 0.6; } 100% { r: 68; opacity: 0; } }
+  .pulse-ring { animation: pulse-ring-svg 2s ease-out infinite; }
 `;
 
 /* -------------------------------------------------------------------------- */
@@ -98,14 +84,12 @@ export function AgentDiagram({
   const [selectedAgent, setSelectedAgent] = useState<AgentNode | null>(null);
   const colors = colorMap[color] || colorMap.blue;
 
-  /* -- Derived data -------------------------------------------------------- */
-
   const orchestrator = agents.find((a) => a.type === 'orchestrator') ?? null;
   const subAgents = agents.filter((a) => a.type === 'agent');
 
   const centerX = 300;
-  const centerY = 250;
-  const radius = 150;
+  const centerY = 220;
+  const radius = 140;
 
   const agentPositions = subAgents.map((agent, i) => {
     const angle = (2 * Math.PI * i) / subAgents.length - Math.PI / 2;
@@ -116,75 +100,25 @@ export function AgentDiagram({
     };
   });
 
-  /* -- Data input positions (left column, evenly spaced) ------------------- */
-  const diYStart = 80;
-  const diYStep = dataInputs.length > 1 ? (340 / (dataInputs.length - 1)) : 0;
-  const dataInputPositions = dataInputs.map((label, i) => ({
-    label,
-    x: 70,
-    y: dataInputs.length === 1 ? centerY : diYStart + diYStep * i,
-  }));
-
-  /* -- Governance positions (right column, evenly spaced) ------------------ */
-  const govYStart = 80;
-  const govYStep = governance.length > 1 ? (340 / (governance.length - 1)) : 0;
-  const governancePositions = governance.map((label, i) => ({
-    label,
-    x: 540,
-    y: governance.length === 1 ? centerY : govYStart + govYStep * i,
-  }));
-
-  /* -- Click handler ------------------------------------------------------- */
-
   function handleNodeClick(agent: AgentNode) {
     setSelectedAgent((prev) => (prev?.id === agent.id ? null : agent));
   }
 
   /* ======================================================================== */
-  /*  Desktop SVG                                                             */
+  /*  Desktop SVG — agents only, no side labels                               */
   /* ======================================================================== */
 
   const desktopSvg = (
     <svg
-      viewBox="0 0 600 500"
+      viewBox="0 0 600 440"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-auto"
+      className="w-full max-w-2xl mx-auto h-auto"
       role="img"
       aria-label="Agent architecture diagram"
     >
       <style>{svgStyles}</style>
 
-      {/* ---- Dashed lines: data inputs -> orchestrator -------------------- */}
-      {dataInputPositions.map((di, i) => (
-        <line
-          key={`di-line-${i}`}
-          x1={di.x + 10}
-          y1={di.y}
-          x2={centerX - 45}
-          y2={centerY}
-          stroke={colors.primary}
-          strokeWidth={1.2}
-          strokeOpacity={0.35}
-          strokeDasharray="4 6"
-        />
-      ))}
-
-      {/* ---- Dashed lines: governance -> orchestrator --------------------- */}
-      {governancePositions.map((g, i) => (
-        <line
-          key={`gov-line-${i}`}
-          x1={g.x - 10}
-          y1={g.y}
-          x2={centerX + 45}
-          y2={centerY}
-          stroke={colors.primary}
-          strokeWidth={1.2}
-          strokeOpacity={0.35}
-          strokeDasharray="4 6"
-        />
-      ))}
-
-      {/* ---- Animated connection lines: orchestrator -> sub-agents -------- */}
+      {/* Animated connection lines: orchestrator -> sub-agents */}
       {agentPositions.map((ap) => (
         <line
           key={`conn-${ap.id}`}
@@ -194,25 +128,17 @@ export function AgentDiagram({
           y2={ap.y}
           stroke={colors.primary}
           strokeWidth={1.8}
-          strokeOpacity={0.45}
+          strokeOpacity={0.4}
           className="flow-line"
         />
       ))}
 
-      {/* ---- Orchestrator pulse ring -------------------------------------- */}
+      {/* Orchestrator pulse ring */}
       {orchestrator && (
-        <circle
-          cx={centerX}
-          cy={centerY}
-          r={48}
-          fill="none"
-          stroke={colors.primary}
-          strokeWidth={2}
-          className="pulse-ring"
-        />
+        <circle cx={centerX} cy={centerY} r={48} fill="none" stroke={colors.primary} strokeWidth={2} className="pulse-ring" />
       )}
 
-      {/* ---- Orchestrator node -------------------------------------------- */}
+      {/* Orchestrator node */}
       {orchestrator && (
         <g
           className="agent-node"
@@ -220,23 +146,9 @@ export function AgentDiagram({
           tabIndex={0}
           role="button"
           aria-label={`Orchestrator: ${orchestrator.label}`}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              handleNodeClick(orchestrator);
-            }
-          }}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleNodeClick(orchestrator); } }}
         >
-          <circle
-            className="node-circle"
-            cx={centerX}
-            cy={centerY}
-            r={45}
-            fill={colors.primary}
-            stroke="white"
-            strokeWidth={3}
-          />
-          {/* Label text inside orchestrator */}
+          <circle className="node-circle" cx={centerX} cy={centerY} r={45} fill={colors.primary} stroke="white" strokeWidth={3} />
           {wrapText(orchestrator.label, 12).map((line, li, arr) => (
             <text
               key={li}
@@ -255,7 +167,7 @@ export function AgentDiagram({
         </g>
       )}
 
-      {/* ---- Sub-agent nodes ---------------------------------------------- */}
+      {/* Sub-agent nodes */}
       {agentPositions.map((ap) => (
         <g
           key={ap.id}
@@ -264,35 +176,10 @@ export function AgentDiagram({
           tabIndex={0}
           role="button"
           aria-label={`Agent: ${ap.label}`}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              handleNodeClick(ap);
-            }
-          }}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleNodeClick(ap); } }}
         >
-          {/* Hover ring */}
-          <circle
-            className="node-ring"
-            cx={ap.x}
-            cy={ap.y}
-            r={40}
-            fill="none"
-            stroke={colors.primary}
-            strokeWidth={2}
-            opacity={0}
-            style={{ transition: 'opacity 0.2s' }}
-          />
-          <circle
-            className="node-circle"
-            cx={ap.x}
-            cy={ap.y}
-            r={35}
-            fill={colors.light}
-            stroke={colors.primary}
-            strokeWidth={2}
-            style={{ transition: 'filter 0.2s' }}
-          />
+          <circle className="node-ring" cx={ap.x} cy={ap.y} r={40} fill="none" stroke={colors.primary} strokeWidth={2} opacity={0} style={{ transition: 'opacity 0.2s' }} />
+          <circle className="node-circle" cx={ap.x} cy={ap.y} r={35} fill={colors.light} stroke={colors.primary} strokeWidth={2} style={{ transition: 'filter 0.2s' }} />
           {wrapText(ap.label, 10).map((line, li, arr) => (
             <text
               key={li}
@@ -311,88 +198,9 @@ export function AgentDiagram({
         </g>
       ))}
 
-      {/* ---- Data input labels (left side) -------------------------------- */}
-      {dataInputPositions.map((di, i) => (
-        <g key={`di-${i}`}>
-          {/* Small square icon */}
-          <rect
-            x={di.x - 6}
-            y={di.y - 6}
-            width={12}
-            height={12}
-            rx={3}
-            fill={colors.light}
-            stroke={colors.primary}
-            strokeWidth={1}
-          />
-          {/* Arrow-right tiny icon inside rect */}
-          <path
-            d={`M${di.x - 3} ${di.y} L${di.x + 3} ${di.y} M${di.x + 1} ${di.y - 2.5} L${di.x + 3} ${di.y} L${di.x + 1} ${di.y + 2.5}`}
-            stroke={colors.primary}
-            strokeWidth={1.2}
-            fill="none"
-          />
-          {wrapText(di.label, 14).map((line, li) => (
-            <text
-              key={li}
-              x={di.x}
-              y={di.y + 18 + li * 12}
-              textAnchor="middle"
-              fill="#475569"
-              fontSize={9}
-              fontWeight={500}
-            >
-              {line}
-            </text>
-          ))}
-        </g>
-      ))}
-
-      {/* ---- Governance labels (right side) ------------------------------- */}
-      {governancePositions.map((g, i) => (
-        <g key={`gov-${i}`}>
-          {/* Small shield-like icon */}
-          <rect
-            x={g.x - 6}
-            y={g.y - 6}
-            width={12}
-            height={12}
-            rx={3}
-            fill={colors.light}
-            stroke={colors.primary}
-            strokeWidth={1}
-          />
-          {/* Check-mark tiny icon inside rect */}
-          <path
-            d={`M${g.x - 3} ${g.y} L${g.x - 1} ${g.y + 2.5} L${g.x + 3} ${g.y - 2.5}`}
-            stroke={colors.primary}
-            strokeWidth={1.3}
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          {wrapText(g.label, 14).map((line, li) => (
-            <text
-              key={li}
-              x={g.x}
-              y={g.y + 18 + li * 12}
-              textAnchor="middle"
-              fill="#475569"
-              fontSize={9}
-              fontWeight={500}
-            >
-              {line}
-            </text>
-          ))}
-        </g>
-      ))}
-
-      {/* ---- Section labels ----------------------------------------------- */}
-      <text x={70} y={40} textAnchor="middle" fill="#94A3B8" fontSize={10} fontWeight={600} letterSpacing={1}>
-        DATA INPUTS
-      </text>
-      <text x={540} y={40} textAnchor="middle" fill="#94A3B8" fontSize={10} fontWeight={600} letterSpacing={1}>
-        GOVERNANCE
+      {/* Click hint text */}
+      <text x={centerX} y={425} textAnchor="middle" fill="#94A3B8" fontSize={10}>
+        Click any node to view details
       </text>
     </svg>
   );
@@ -410,112 +218,79 @@ export function AgentDiagram({
     <div className="flex flex-col items-center gap-0">
       {allAgentsOrdered.map((agent, idx) => (
         <div key={agent.id} className="flex flex-col items-center w-full">
-          {/* Vertical connector line (except before first card) */}
           {idx > 0 && (
-            <div
-              className="w-px h-6"
-              style={{ backgroundColor: colors.primary, opacity: 0.3 }}
-            />
+            <div className="w-px h-6" style={{ backgroundColor: colors.primary, opacity: 0.3 }} />
           )}
-
-          {/* Agent card */}
           <button
             onClick={() => handleNodeClick(agent)}
-            className={`
-              w-full max-w-xs rounded-xl border-2 px-4 py-3 text-left transition-all duration-200
-              ${
-                agent.type === 'orchestrator'
-                  ? `${colors.border} shadow-md`
-                  : 'border-slate-200 hover:shadow-sm'
-              }
-              ${
-                selectedAgent?.id === agent.id
-                  ? 'ring-2 ring-offset-2'
-                  : ''
-              }
+            className={`w-full max-w-xs rounded-xl border-2 px-4 py-3 text-left transition-all duration-200
+              ${agent.type === 'orchestrator' ? `${colors.border} shadow-md` : 'border-slate-200 hover:shadow-sm'}
+              ${selectedAgent?.id === agent.id ? 'ring-2 ring-offset-2' : ''}
             `}
-            style={
-              agent.type === 'orchestrator'
-                ? { backgroundColor: colors.primary, color: 'white' }
-                : { backgroundColor: colors.light }
-            }
+            style={agent.type === 'orchestrator' ? { backgroundColor: colors.primary, color: 'white' } : { backgroundColor: colors.light }}
           >
-            <p
-              className="text-sm font-semibold"
-              style={
-                agent.type === 'orchestrator'
-                  ? { color: 'white' }
-                  : { color: colors.primary }
-              }
-            >
+            <p className="text-sm font-semibold" style={agent.type === 'orchestrator' ? { color: 'white' } : { color: colors.primary }}>
               {agent.label}
             </p>
-            <p
-              className="text-xs mt-0.5"
-              style={
-                agent.type === 'orchestrator'
-                  ? { color: 'rgba(255,255,255,0.8)' }
-                  : { color: '#64748B' }
-              }
-            >
+            <p className="text-xs mt-0.5" style={agent.type === 'orchestrator' ? { color: 'rgba(255,255,255,0.8)' } : { color: '#64748B' }}>
               {agent.role}
             </p>
           </button>
         </div>
       ))}
+    </div>
+  );
 
-      {/* Data inputs & governance as small tags below the cards */}
-      {(dataInputs.length > 0 || governance.length > 0) && (
-        <div className="mt-6 w-full max-w-xs grid grid-cols-2 gap-4">
-          {dataInputs.length > 0 && (
-            <div>
-              <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                Data Inputs
-              </p>
-              <ul className="space-y-1">
-                {dataInputs.map((di, i) => (
-                  <li
-                    key={i}
-                    className="text-xs text-slate-600 flex items-center gap-1.5"
-                  >
-                    <span
-                      className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: colors.primary }}
-                    />
-                    {di}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {governance.length > 0 && (
-            <div>
-              <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                Governance
-              </p>
-              <ul className="space-y-1">
-                {governance.map((g, i) => (
-                  <li
-                    key={i}
-                    className="text-xs text-slate-600 flex items-center gap-1.5"
-                  >
-                    <span
-                      className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: colors.primary }}
-                    />
-                    {g}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+  /* ======================================================================== */
+  /*  Data Inputs & Governance — rendered as HTML below the diagram           */
+  /* ======================================================================== */
+
+  const sideInfo = (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      {dataInputs.length > 0 && (
+        <div className={`rounded-xl border ${colors.border} bg-white p-5`}>
+          <div className="flex items-center gap-2 mb-3">
+            <svg className="w-4 h-4" style={{ color: colors.primary }} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125v-3.75" />
+            </svg>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-500">Data Inputs</h4>
+          </div>
+          <ul className="space-y-2">
+            {dataInputs.map((di, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                <span className="mt-1.5 inline-block h-1.5 w-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: colors.primary }} />
+                {di}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {governance.length > 0 && (
+        <div className={`rounded-xl border ${colors.border} bg-white p-5`}>
+          <div className="flex items-center gap-2 mb-3">
+            <svg className="w-4 h-4" style={{ color: colors.primary }} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-500">Governance</h4>
+          </div>
+          <ul className="space-y-2">
+            {governance.map((g, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                <svg className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.primary }} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {g}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>
   );
 
   /* ======================================================================== */
-  /*  Detail panel (shared between layouts)                                   */
+  /*  Detail panel                                                            */
   /* ======================================================================== */
 
   const detailPanel = (
@@ -531,15 +306,8 @@ export function AgentDiagram({
         >
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
-              <h4
-                className="text-base font-bold"
-                style={{ color: colors.primary }}
-              >
-                {selectedAgent.label}
-              </h4>
-              <p className="text-sm text-slate-500 mt-0.5">
-                {selectedAgent.role}
-              </p>
+              <h4 className="text-base font-bold" style={{ color: colors.primary }}>{selectedAgent.label}</h4>
+              <p className="text-sm text-slate-500 mt-0.5">{selectedAgent.role}</p>
             </div>
             <button
               onClick={() => setSelectedAgent(null)}
@@ -547,24 +315,15 @@ export function AgentDiagram({
               aria-label="Close detail panel"
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path
-                  d="M5 5L13 13M13 5L5 13"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                />
+                <path d="M5 5L13 13M13 5L5 13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
               </svg>
             </button>
           </div>
-
           {selectedAgent.responsibilities.length > 0 && (
             <ul className="mt-3 space-y-1.5">
               {selectedAgent.responsibilities.map((r, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
-                  <span
-                    className="mt-1.5 inline-block h-1.5 w-1.5 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: colors.primary }}
-                  />
+                  <span className="mt-1.5 inline-block h-1.5 w-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: colors.primary }} />
                   {r}
                 </li>
               ))}
@@ -581,14 +340,17 @@ export function AgentDiagram({
 
   return (
     <div>
-      {/* Desktop: SVG radial diagram (md and up) */}
+      {/* Desktop: SVG radial diagram */}
       <div className="hidden md:block">{desktopSvg}</div>
 
-      {/* Mobile: vertical card stack (below md) */}
+      {/* Mobile: vertical card stack */}
       <div className="block md:hidden">{mobileLayout}</div>
 
-      {/* Detail panel (both layouts) */}
+      {/* Detail panel */}
       {detailPanel}
+
+      {/* Data inputs & governance as clean HTML cards */}
+      {sideInfo}
     </div>
   );
 }
