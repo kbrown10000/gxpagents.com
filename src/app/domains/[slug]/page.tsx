@@ -45,7 +45,7 @@ export default function DomainPage({ params }: { params: { slug: string } }) {
               <div className="relative rounded-xl overflow-hidden shadow-2xl aspect-video">
                 <video
                   className="w-full h-full object-cover"
-                  src="/videos/heygen-quality-test.mp4"
+                  src="/videos/heygen-quality.mp4"
                   controls
                   playsInline
                   preload="metadata"
