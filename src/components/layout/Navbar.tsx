@@ -70,10 +70,12 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600">
-            <span className="text-sm font-bold text-white">Gx</span>
-          </div>
+        <Link href="/" className="flex items-center gap-3">
+          <img
+            src="/images/logo-mark.png"
+            alt="GxP Agents"
+            className="h-9 w-9 rounded-lg object-contain"
+          />
           <span className="text-xl font-bold text-slate-900">
             GxP <span className="gradient-text">Agents</span>
           </span>

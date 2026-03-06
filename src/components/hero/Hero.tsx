@@ -1,9 +1,11 @@
 import { HeroCanvas } from './HeroCanvas';
+import { HeroVideo } from './HeroVideo';
 import { Button } from '../ui/Button';
 
 export function Hero() {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-50 to-white">
+      <HeroVideo />
       <HeroCanvas />
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm font-medium mb-8">

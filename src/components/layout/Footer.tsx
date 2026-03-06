@@ -34,10 +34,12 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-indigo-500">
-                <span className="text-sm font-bold text-white">Gx</span>
-              </div>
+            <Link href="/" className="flex items-center gap-3">
+              <img
+                src="/images/logo-mark.png"
+                alt="GxP Agents"
+                className="h-9 w-9 rounded-lg object-contain brightness-0 invert"
+              />
               <span className="text-xl font-bold text-white">
                 GxP Agents
               </span>
