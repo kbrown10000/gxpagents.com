@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const domainLinks = [
   { name: 'Quality', slug: 'quality' },
@@ -35,10 +36,12 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3">
-              <img
+              <Image
                 src="/images/logo-mark.png"
                 alt="GxP Agents"
-                className="h-9 w-9 rounded-lg object-contain brightness-0 invert"
+                width={36}
+                height={36}
+                className="rounded-lg object-contain brightness-0 invert"
               />
               <span className="text-xl font-bold text-white">
                 GxP Agents

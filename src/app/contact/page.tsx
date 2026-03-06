@@ -16,7 +16,7 @@ export default function ContactPage() {
       <section className="pt-32 pb-16 px-6 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-6xl mx-auto text-center">
           <ScrollReveal>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-900 text-sm font-medium mb-6">
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -67,7 +67,7 @@ export default function ContactPage() {
             <div className="lg:col-span-2 space-y-6">
               {/* Demo Booking CTA */}
               <ScrollReveal delay={0.1}>
-                <div className="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl p-8 text-white">
+                <div className="bg-gradient-to-br from-blue-800 to-indigo-700 rounded-xl p-8 text-white">
                   <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mb-4">
                     <svg
                       className="w-6 h-6 text-white"
@@ -91,7 +91,7 @@ export default function ContactPage() {
                   </p>
                   <a
                     href="mailto:info@gxpagents.com?subject=Demo%20Request"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-blue-700 font-semibold text-sm hover:bg-blue-50 transition-colors duration-200"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-blue-900 font-semibold text-sm hover:bg-blue-50 transition-colors duration-200"
                   >
                     Schedule Demo
                     <svg
@@ -122,7 +122,7 @@ export default function ContactPage() {
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-5 h-5 text-blue-600"
+                          className="w-5 h-5 text-blue-800"
                           fill="none"
                           viewBox="0 0 24 24"
                           strokeWidth={1.5}
@@ -141,7 +141,7 @@ export default function ContactPage() {
                         </p>
                         <a
                           href="mailto:info@gxpagents.com"
-                          className="text-sm text-blue-600 hover:text-blue-700"
+                          className="text-sm text-blue-800 hover:text-blue-900"
                         >
                           info@gxpagents.com
                         </a>
@@ -152,7 +152,7 @@ export default function ContactPage() {
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-5 h-5 text-blue-600"
+                          className="w-5 h-5 text-blue-800"
                           fill="none"
                           viewBox="0 0 24 24"
                           strokeWidth={1.5}
@@ -171,7 +171,7 @@ export default function ContactPage() {
                         </p>
                         <a
                           href="tel:+18055551234"
-                          className="text-sm text-blue-600 hover:text-blue-700"
+                          className="text-sm text-blue-800 hover:text-blue-900"
                         >
                           +1 (805) 555-1234
                         </a>
@@ -192,7 +192,7 @@ export default function ContactPage() {
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-5 h-5 text-blue-600"
+                          className="w-5 h-5 text-blue-800"
                           fill="none"
                           viewBox="0 0 24 24"
                           strokeWidth={1.5}
@@ -227,7 +227,7 @@ export default function ContactPage() {
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-5 h-5 text-indigo-600"
+                          className="w-5 h-5 text-indigo-700"
                           fill="none"
                           viewBox="0 0 24 24"
                           strokeWidth={1.5}
@@ -278,7 +278,7 @@ export default function ContactPage() {
             </p>
             <a
               href="/use-cases"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold rounded-lg bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold rounded-lg bg-gradient-to-r from-blue-800 to-indigo-700 text-white hover:brightness-110 shadow-md hover:shadow-lg transition-all duration-200"
             >
               Explore Use Cases
               <svg

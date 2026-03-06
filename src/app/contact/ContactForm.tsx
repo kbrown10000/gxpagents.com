@@ -3,8 +3,8 @@
 import { useState, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const domainOptions = [
-  { value: '', label: 'Select a domain of interest' },
+const interestOptions = [
+  { value: '', label: 'Select your area of interest' },
   { value: 'quality', label: 'Quality' },
   { value: 'regulatory', label: 'Regulatory Affairs' },
   { value: 'clinical', label: 'Clinical Development' },
@@ -13,14 +13,34 @@ const domainOptions = [
   { value: 'medical-affairs', label: 'Medical Affairs' },
   { value: 'cybersecurity', label: 'Cybersecurity & TPRM' },
   { value: 'corporate', label: 'Corporate Functions' },
+  { value: 'general', label: 'General Inquiry' },
+];
+
+const hearAboutOptions = [
+  { value: '', label: 'How did you hear about us?' },
+  { value: 'search', label: 'Search Engine (Google, Bing, etc.)' },
+  { value: 'linkedin', label: 'LinkedIn' },
+  { value: 'colleague', label: 'Colleague / Referral' },
+  { value: 'conference', label: 'Conference / Event' },
+  { value: 'partner', label: 'Partner / Consultant' },
+  { value: 'usdm', label: 'USDM Life Sciences' },
+  { value: 'other', label: 'Other' },
 ];
 
 interface FormData {
   name: string;
   email: string;
   company: string;
-  domain: string;
+  interest: string;
+  hearAbout: string;
   message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  company?: string;
+  message?: string;
 }
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
@@ -30,9 +50,11 @@ export function ContactForm() {
     name: '',
     email: '',
     company: '',
-    domain: '',
+    interest: '',
+    hearAbout: '',
     message: '',
   });
+  const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<FormStatus>('idle');
 
   const handleChange = (
@@ -40,24 +62,86 @@ export function ContactForm() {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error for this field when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    // Name validation
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    }
+
+    // Email validation
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    // Company validation
+    if (!formData.company.trim()) {
+      newErrors.company = 'Company name is required';
+    }
+
+    // Message validation
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     setStatus('submitting');
 
-    // Simulate form submission
+    // TODO: Wire Pardot endpoint here
+    // For now, simulate form submission to placeholder
     try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      // Simulate delay
       await new Promise((resolve) => setTimeout(resolve, 1500));
+
       setStatus('success');
-      setFormData({ name: '', email: '', company: '', domain: '', message: '' });
-    } catch {
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        interest: '',
+        hearAbout: '',
+        message: '',
+      });
+      setErrors({});
+    } catch (error) {
+      console.error('Form submission error:', error);
       setStatus('error');
     }
   };
 
-  const inputClasses =
-    'w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200';
+  const inputClasses = (fieldName: keyof FormErrors) =>
+    `w-full px-4 py-3 rounded-lg border ${
+      errors[fieldName]
+        ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500'
+        : 'border-slate-200 bg-white focus:ring-blue-800 focus:border-blue-800'
+    } text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 transition-all duration-200`;
 
   const labelClasses = 'block text-sm font-medium text-slate-700 mb-1.5';
 
@@ -97,7 +181,7 @@ export function ContactForm() {
             </p>
             <button
               onClick={() => setStatus('idle')}
-              className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
+              className="text-sm font-medium text-blue-800 hover:text-blue-900 transition-colors"
             >
               Send another message
             </button>
@@ -122,12 +206,14 @@ export function ContactForm() {
                   type="text"
                   id="name"
                   name="name"
-                  required
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Jane Smith"
-                  className={inputClasses}
+                  className={inputClasses('name')}
                 />
+                {errors.name && (
+                  <p className="mt-1.5 text-xs text-red-600">{errors.name}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="email" className={labelClasses}>
@@ -137,43 +223,68 @@ export function ContactForm() {
                   type="email"
                   id="email"
                   name="email"
-                  required
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="jane@company.com"
-                  className={inputClasses}
+                  className={inputClasses('email')}
                 />
+                {errors.email && (
+                  <p className="mt-1.5 text-xs text-red-600">{errors.email}</p>
+                )}
               </div>
             </div>
 
-            {/* Company & Domain Row */}
+            {/* Company Name (Required) */}
+            <div>
+              <label htmlFor="company" className={labelClasses}>
+                Company Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                placeholder="Your organization"
+                className={inputClasses('company')}
+              />
+              {errors.company && (
+                <p className="mt-1.5 text-xs text-red-600">{errors.company}</p>
+              )}
+            </div>
+
+            {/* Interest & Hear About Row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="company" className={labelClasses}>
-                  Company
-                </label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  placeholder="Your organization"
-                  className={inputClasses}
-                />
-              </div>
-              <div>
-                <label htmlFor="domain" className={labelClasses}>
-                  Domain of Interest
+                <label htmlFor="interest" className={labelClasses}>
+                  What are you interested in?
                 </label>
                 <select
-                  id="domain"
-                  name="domain"
-                  value={formData.domain}
+                  id="interest"
+                  name="interest"
+                  value={formData.interest}
                   onChange={handleChange}
-                  className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20stroke-width%3D%222%22%20stroke%3D%22%2394a3b8%22%3E%3Cpath%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20d%3D%22M19.5%208.25l-7.5%207.5-7.5-7.5%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1.25rem] bg-[right_0.75rem_center] bg-no-repeat pr-10`}
+                  className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-800 focus:border-transparent transition-all duration-200 appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20stroke-width%3D%222%22%20stroke%3D%22%2394a3b8%22%3E%3Cpath%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20d%3D%22M19.5%208.25l-7.5%207.5-7.5-7.5%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1.25rem] bg-[right_0.75rem_center] bg-no-repeat pr-10"
                 >
-                  {domainOptions.map((opt) => (
+                  {interestOptions.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="hearAbout" className={labelClasses}>
+                  How did you hear about us?
+                </label>
+                <select
+                  id="hearAbout"
+                  name="hearAbout"
+                  value={formData.hearAbout}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-800 focus:border-transparent transition-all duration-200 appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20stroke-width%3D%222%22%20stroke%3D%22%2394a3b8%22%3E%3Cpath%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20d%3D%22M19.5%208.25l-7.5%207.5-7.5-7.5%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1.25rem] bg-[right_0.75rem_center] bg-no-repeat pr-10"
+                >
+                  {hearAboutOptions.map((opt) => (
                     <option key={opt.value} value={opt.value}>
                       {opt.label}
                     </option>
@@ -190,13 +301,15 @@ export function ContactForm() {
               <textarea
                 id="message"
                 name="message"
-                required
                 rows={5}
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Tell us about your challenges and what you'd like to explore..."
-                className={`${inputClasses} resize-vertical`}
+                className={`${inputClasses('message')} resize-vertical`}
               />
+              {errors.message && (
+                <p className="mt-1.5 text-xs text-red-600">{errors.message}</p>
+              )}
             </div>
 
             {/* Error message */}
@@ -228,7 +341,7 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="w-full sm:w-auto px-8 py-3 rounded-lg bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3 rounded-lg bg-gradient-to-r from-blue-800 to-indigo-700 text-white font-semibold text-sm hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
             >
               {status === 'submitting' ? (
                 <>

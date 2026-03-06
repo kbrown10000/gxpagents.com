@@ -13,11 +13,32 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-800 to-indigo-700;
   }
 
   .card-hover {
     @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* Enterprise navy color palette */
+  .bg-primary {
+    background-color: #1e40af; /* blue-800 */
+  }
+
+  .bg-primary-dark {
+    background-color: #1e3a8a; /* blue-900 */
+  }
+
+  .bg-navy {
+    background-color: #1e3a5f; /* deep navy */
+  }
+
+  .text-primary {
+    color: #1e40af;
+  }
+
+  .border-primary {
+    border-color: #1e40af;
   }
 }
 

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DomainIcon } from '../ui/DomainIcon';
 
@@ -20,6 +21,7 @@ const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Domains', href: '#', hasDropdown: true },
   { name: 'Use Cases', href: '/use-cases' },
+  { name: 'FAQ', href: '/faq' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ];
@@ -72,10 +74,13 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-          <img
+          <Image
             src="/images/logo-mark.png"
             alt="GxP Agents"
-            className="h-9 w-9 rounded-lg object-contain"
+            width={36}
+            height={36}
+            className="rounded-lg object-contain"
+            priority
           />
           <span className="text-xl font-bold text-slate-900">
             GxP <span className="gradient-text">Agents</span>
@@ -94,7 +99,7 @@ export function Navbar() {
                 onMouseLeave={handleMouseLeave}
               >
                 <button
-                  className="flex items-center gap-1 text-sm font-medium text-slate-600 transition-colors hover:text-blue-600"
+                  className="flex items-center gap-1 text-sm font-medium text-slate-600 transition-colors hover:text-blue-800"
                   onClick={() => setDomainsOpen(!domainsOpen)}
                 >
                   {link.name}
@@ -127,7 +132,7 @@ export function Navbar() {
                           <Link
                             key={domain.slug}
                             href={`/domains/${domain.slug}`}
-                            className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-600 transition-colors hover:bg-blue-50 hover:text-blue-700"
+                            className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-600 transition-colors hover:bg-blue-50 hover:text-blue-900"
                             onClick={() => setDomainsOpen(false)}
                           >
                             <DomainIcon slug={domain.slug} className="w-5 h-5 text-slate-500" />
@@ -143,7 +148,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600"
+                className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-800"
               >
                 {link.name}
               </Link>
@@ -151,7 +156,7 @@ export function Navbar() {
           )}
           <Link
             href="/contact"
-            className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:shadow-md hover:brightness-110"
+            className="rounded-lg bg-gradient-to-r from-blue-800 to-indigo-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:shadow-md hover:brightness-110"
           >
             Get Started
           </Link>
@@ -188,7 +193,7 @@ export function Navbar() {
             <div className="space-y-1 px-6 py-4">
               <Link
                 href="/"
-                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-800"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
@@ -197,7 +202,7 @@ export function Navbar() {
               {/* Mobile Domains Accordion */}
               <div>
                 <button
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600"
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-800"
                   onClick={() => setDomainsOpen(!domainsOpen)}
                 >
                   <span>Domains</span>
@@ -227,7 +232,7 @@ export function Navbar() {
                           <Link
                             key={domain.slug}
                             href={`/domains/${domain.slug}`}
-                            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-500 hover:bg-blue-50 hover:text-blue-700"
+                            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-500 hover:bg-blue-50 hover:text-blue-900"
                             onClick={() => {
                               setDomainsOpen(false);
                               setMobileMenuOpen(false);
@@ -245,21 +250,28 @@ export function Navbar() {
 
               <Link
                 href="/use-cases"
-                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-800"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Use Cases
               </Link>
               <Link
+                href="/faq"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-800"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                FAQ
+              </Link>
+              <Link
                 href="/about"
-                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-800"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-800"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
@@ -267,7 +279,7 @@ export function Navbar() {
               <div className="pt-2">
                 <Link
                   href="/contact"
-                  className="block rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm"
+                  className="block rounded-lg bg-gradient-to-r from-blue-800 to-indigo-700 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Get Started
