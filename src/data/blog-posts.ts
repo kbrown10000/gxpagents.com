@@ -15,8 +15,8 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     slug: 'deviation-investigations-outsource-regulatory-experts',
-    title: 'The Hidden Cost of Deviation Investigations — And Why Life Sciences Companies Should Outsource Them',
-    excerpt: 'Deviation investigations consume more quality team bandwidth than almost any other activity. Most companies struggle with the same problems: inconsistent root cause analysis, overdue CAPAs, and repeat deviations. Here\'s why outsourcing to regulatory domain experts changes the math.',
+    title: 'Deviation Investigation Quality Is a Top Agency Finding — AI Can Help, but Should Companies Invest in AI Projects to Build This In-House?',
+    excerpt: 'Deviation investigation quality is consistently among the top FDA and EU MDR audit findings. AI offers real solutions — but the strategic question isn\'t whether to use AI. It\'s whether building it in-house is the right investment when regulatory domain experts have already solved it.',
     date: '2026-03-05',
     author: 'Vega Finucan',
     authorRole: 'Business Development, USDM Life Sciences',
