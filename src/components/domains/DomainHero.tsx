@@ -59,14 +59,14 @@ const colorClasses: Record<string, { bg: string; text: string; badge: string; bo
 };
 
 const domainImages: Record<string, string> = {
-  quality: '/images/domains/quality.png',
-  regulatory: '/images/domains/regulatory.png',
-  clinical: '/images/domains/clinical.png',
-  manufacturing: '/images/domains/manufacturing.png',
-  safety: '/images/domains/safety.png',
-  'medical-affairs': '/images/domains/medical-affairs.png',
-  cybersecurity: '/images/domains/cybersecurity.png',
-  corporate: '/images/domains/corporate.png',
+  quality: '/images/domains/quality.jpg',
+  regulatory: '/images/domains/regulatory.jpg',
+  clinical: '/images/domains/clinical.jpg',
+  manufacturing: '/images/domains/manufacturing.jpg',
+  safety: '/images/domains/safety.jpg',
+  'medical-affairs': '/images/domains/medical-affairs.jpg',
+  cybersecurity: '/images/domains/cybersecurity.jpg',
+  corporate: '/images/domains/corporate.jpg',
 };
 
 interface DomainHeroProps {
