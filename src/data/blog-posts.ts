@@ -34,6 +34,8 @@ The tension is perfectly human. The production schedule is urgent, visible, and 
 
 So the deviation record gets half-written. The details that would have revealed a systemic equipment issue or a process trending toward failure get lost in shorthand. And three months later, when the same deviation happens for the fifth time, the investigation team is starting from scratch because the original signal was buried.
 
+The financial reality makes this even more urgent. **Each deviation costs $5,000-$10,000** when you factor in investigation time, quality team labor, production impact, and documentation overhead. **Each CAPA costs approximately $25,000.** A company running 150 deviations per year is spending $750K-$1.5M on deviation management alone — before a single CAPA is implemented. When investigations are rushed and CAPAs fail, those costs multiply through repeat deviations, re-investigations, and regulatory remediation.
+
 **Deviations need AI in the loop.** Not to replace human judgment — but to make sure the signal doesn't die in the rush to get back to production. AI that understands the competing priority between production urgency and investigation quality. AI that captures the complete picture in minutes instead of hours, so the operator gets back to work AND the quality system gets the data it needs to identify a failing process, equipment degradation, or facility issue before it becomes a bigger problem.
 
 That's the core thesis of this article. And it's why the question isn't whether AI belongs in deviation management — it's whether companies should build this capability in-house or partner with regulatory domain experts who've already solved it.
@@ -66,6 +68,8 @@ Here's the math most VPs of Quality don't want to say out loud:
 - Quality team capacity: 3 FTEs x 1,800 hours = 5,400 hours (before all their other responsibilities)
 
 The numbers don't close. Investigations get rushed. Root cause analysis gets superficial. The same deviations recur because the real systemic issue was never identified.
+
+And every repeat deviation costs another $5,000-$10,000. Every failed CAPA that has to be rewritten and re-implemented costs another $25,000. The backlog isn't just a quality problem — it's a financial drain that compounds every quarter.
 
 ### The "Human Error" Trap
 
