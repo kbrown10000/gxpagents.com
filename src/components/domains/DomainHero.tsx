@@ -58,15 +58,38 @@ const colorClasses: Record<string, { bg: string; text: string; badge: string; bo
   },
 };
 
+const domainImages: Record<string, string> = {
+  quality: '/images/domains/quality.png',
+  regulatory: '/images/domains/regulatory.png',
+  clinical: '/images/domains/clinical.png',
+  manufacturing: '/images/domains/manufacturing.png',
+  safety: '/images/domains/safety.png',
+  'medical-affairs': '/images/domains/medical-affairs.png',
+  cybersecurity: '/images/domains/cybersecurity.png',
+  corporate: '/images/domains/corporate.png',
+};
+
 interface DomainHeroProps {
   domain: Domain;
 }
 
 export function DomainHero({ domain }: DomainHeroProps) {
   const colors = colorClasses[domain.color] || colorClasses.blue;
+  const heroImage = domainImages[domain.slug];
 
   return (
     <section className={`relative bg-gradient-to-b ${colors.bg} pt-32 pb-20 overflow-hidden`}>
+      {/* AI-generated hero image */}
+      {heroImage && (
+        <div className="absolute top-0 right-0 w-1/2 h-full hidden lg:block">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroImage})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent" />
+        </div>
+      )}
       {/* Decorative background pattern */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div
