@@ -1,5 +1,8 @@
+'use client';
+
 import { Domain } from '@/data/domains';
 import { ScrollReveal } from '../ui/ScrollReveal';
+import { useEffect, useRef, useState } from 'react';
 
 const colorClasses: Record<string, { bg: string; text: string; badge: string; border: string }> = {
   blue: {
@@ -69,6 +72,17 @@ const domainImages: Record<string, string> = {
   corporate: '/images/domains/corporate.jpg',
 };
 
+const domainVideos: Record<string, string> = {
+  quality: '/videos/domains/quality.mp4',
+  regulatory: '/videos/domains/regulatory.mp4',
+  clinical: '/videos/domains/clinical.mp4',
+  manufacturing: '/videos/domains/manufacturing.mp4',
+  safety: '/videos/domains/safety.mp4',
+  'medical-affairs': '/videos/domains/medical-affairs.mp4',
+  cybersecurity: '/videos/domains/cybersecurity.mp4',
+  corporate: '/videos/domains/corporate.mp4',
+};
+
 interface DomainHeroProps {
   domain: Domain;
 }
@@ -76,11 +90,37 @@ interface DomainHeroProps {
 export function DomainHero({ domain }: DomainHeroProps) {
   const colors = colorClasses[domain.color] || colorClasses.blue;
   const heroImage = domainImages[domain.slug];
+  const heroVideo = domainVideos[domain.slug];
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.addEventListener('canplaythrough', () => setVideoLoaded(true));
+    video.play().catch(() => {});
+  }, []);
 
   return (
     <section className={`relative bg-gradient-to-b ${colors.bg} pt-32 pb-20 overflow-hidden`}>
-      {/* AI-generated hero image */}
-      {heroImage && (
+      {/* Veo 3 abstract video background */}
+      {heroVideo && (
+        <div className={`absolute inset-0 transition-opacity duration-1000 ${videoLoaded ? 'opacity-40' : 'opacity-0'}`}>
+          <video
+            ref={videoRef}
+            className="absolute inset-0 w-full h-full object-cover"
+            src={heroVideo}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-white/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-white" />
+        </div>
+      )}
+      {/* Fallback static image for no-JS / before video loads */}
+      {heroImage && !videoLoaded && (
         <div className="absolute top-0 right-0 w-1/2 h-full hidden lg:block">
           <div
             className="absolute inset-0 bg-cover bg-center"
