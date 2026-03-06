@@ -189,7 +189,11 @@ The GxP Agents **Deviation Assistant** — part of the Quality Agent Suite — c
 - **Natural language input** that converts operator descriptions into structured, regulatory-grade documentation
 - **Completeness checks** that flag missing critical fields before the record is submitted
 
-The payoff: a well-documented deviation at the point of observation dramatically improves investigation quality downstream. The investigator gets complete data instead of chasing down operators three weeks later asking "what exactly did you see?"
+**To be clear: this is not a replacement for your QMS.** The Deviation Assistant works alongside TrackWise, Veeva Vault, MasterControl, ETQ — whatever system you run. It enhances the quality of what goes into your QMS, ensures data is captured completely and available when it's needed, and eliminates the single biggest investigation bottleneck: chasing down the staff who worked the shift when the deviation occurred.
+
+Because here's what actually happens without it: a deviation occurs on Tuesday night shift. The operator writes a two-line description and gets back to the batch. The quality investigator picks up the case on Thursday. The operator who witnessed it? They don't work again until Monday. Five days of lost context. Details fade. The investigation starts with gaps that can never be fully recovered.
+
+The Deviation Assistant captures the complete picture at the moment it matters — so the investigator gets actionable data on Day 1 instead of playing detective on Day 5.
 
 ### 2. AI-Powered Investigation Intelligence
 
