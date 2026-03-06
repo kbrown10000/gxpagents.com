@@ -89,6 +89,14 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+
+        {/* ElevenLabs Conversational AI Agent */}
+        <elevenlabs-convai agent-id="agent_0601kk0gv6rkfxktjkexjkyykssk"></elevenlabs-convai>
+        <script
+          src="https://elevenlabs.io/convai-widget/index.js"
+          async
+          type="text/javascript"
+        ></script>
       </body>
     </html>
   );
