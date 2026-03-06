@@ -21,8 +21,7 @@ const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Domains', href: '#', hasDropdown: true },
   { name: 'Use Cases', href: '/use-cases' },
-  { name: 'Resources', href: '/resources' },
-  { name: 'FAQ', href: '/faq' },
+  { name: 'Case Studies', href: '/case-studies' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ];
@@ -257,18 +256,11 @@ export function Navbar() {
                 Use Cases
               </Link>
               <Link
-                href="/resources"
+                href="/case-studies"
                 className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-800"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Resources
-              </Link>
-              <Link
-                href="/faq"
-                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-800"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                FAQ
+                Case Studies
               </Link>
               <Link
                 href="/about"
