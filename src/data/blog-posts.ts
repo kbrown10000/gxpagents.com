@@ -162,7 +162,7 @@ That intelligence helps your team avoid mistakes that other companies have alrea
 
 ## What Good Looks Like: The Ideal State
 
-Here's what a high-functioning deviation investigation system looks like:
+Here's what a [high-functioning deviation investigation system](/domains/quality) looks like:
 
 ### 30-Day Investigation Closure
 From deviation occurrence to CAPA implementation, investigations close within 30 days. Not because they're rushed — because the process is efficient, the investigators are skilled, and the support data is accessible.
@@ -239,7 +239,17 @@ The answers will tell you whether your current approach is sustainable — or wh
 
 Because when FDA shows up, they won't care that you were understaffed. They'll care whether your investigations were thorough, science-based, and effective.
 
-**Ready to stop drowning in deviation backlogs?** Let's talk about how USDM's regulatory investigation team and GxP Agents' AI-powered quality intelligence can bring your investigation system from reactive to predictive.
+**Ready to stop drowning in deviation backlogs?** Let's talk about how USDM's [regulatory investigation team and GxP Agents' AI-powered quality intelligence](/domains/quality) can bring your investigation system from reactive to predictive.
+
+---
+
+## Related Content
+
+**Case Study:** [Top 10 Pharma Reduces Deviation Triage Time by 65%](/case-studies/deviation-triage-transformation) — See how AI-powered deviation classification transformed a drowning quality team into proactive risk managers.
+
+**Resource:** [GAMP 5 Meets AI: A Practical Validation Approach](/resources/gamp-5-ai-validation-guide) — Learn how to validate AI systems for deviation investigation workflows using risk-based approaches.
+
+**Explore:** [Quality Domain](/domains/quality) — Discover our complete AI platform for deviation management, CAPA workflows, and inspection readiness.
     `,
   },
   {
@@ -305,6 +315,18 @@ If you're building your AI governance program, start with three questions:
 3. **Does your change control system account for model updates, prompt changes, and training data shifts?** (If not, you have a compliance risk.)
 
 The companies that answer these questions now — before the next FDA inspection or EU AI Act enforcement action — will be the ones that turn AI governance from a cost center into a competitive advantage.
+
+---
+
+## Related Content
+
+**Resource:** [The Complete Guide to 21 CFR Part 11 Compliance for AI Systems](/resources/21-cfr-part-11-ai-framework) — Download our practical framework for implementing AI within FDA-regulated environments.
+
+**Resource:** [GAMP 5 Meets AI: A Practical Validation Approach](/resources/gamp-5-ai-validation-guide) — Get our guide bridging traditional GAMP 5 validation and modern AI/ML systems.
+
+**Explore:** [Quality Domain](/domains/quality) — See how AI governance is embedded into every quality operation.
+
+**Explore:** [Regulatory Affairs Domain](/domains/regulatory) — Learn about AI-powered regulatory compliance and submission automation.
     `,
   },
   {
@@ -361,6 +383,14 @@ Companies that build AI-driven quality intelligence in 2026-2027 will have a str
 Companies that wait until 2028-2029 will be playing catch-up against competitors whose AI has already learned their industry's quality patterns.
 
 The QMS isn't dead. But the QMS as your primary quality intelligence tool? That era is over.
+
+---
+
+## Related Content
+
+**Case Study:** [Top 10 Pharma Reduces Deviation Triage Time by 65%](/case-studies/deviation-triage-transformation) — See how AI-driven quality intelligence transformed reactive compliance into predictive risk management.
+
+**Explore:** [Quality Domain](/domains/quality) — Discover how AI agents bring continuous intelligence to deviation management, CAPA workflows, and inspection readiness.
     `,
   },
   {
@@ -417,6 +447,16 @@ The companies that understand this convergence are building integrated risk view
 Before you buy another tool or hire another consultant, answer one question: **Can you produce, in under 30 minutes, a complete list of every third-party vendor with access to GxP data, their current security posture, and the last time their controls were validated?**
 
 If not, that's your starting point. Not more policy. Visibility.
+
+---
+
+## Related Content
+
+**Case Study:** [Global Diagnostics Company Cuts Vendor Risk Assessment from 6 Weeks to 3 Days](/case-studies/cybersecurity-vendor-risk) — See how AI-powered vendor risk scoring turned annual compliance checkboxes into continuous intelligence.
+
+**Resource:** [GxP-Aware Vendor Cybersecurity Risk Assessment Checklist](/resources/vendor-risk-assessment-checklist) — Download our 50-point structured checklist for evaluating vendor security posture.
+
+**Explore:** [Cybersecurity & Third-Party Risk Management Domain](/domains/cybersecurity) — Discover our complete AI platform for continuous vendor monitoring and GxP-aware threat detection.
     `,
   },
   {
@@ -466,6 +506,20 @@ We built our regulatory agents specifically for this intersection. The Regulator
 - **Labeling intelligence** that maps AI-specific claims and indications across markets
 
 For diagnostics companies navigating this space: the regulatory framework is becoming clearer, not more ambiguous. The companies that build governance into their AI development lifecycle now will have a significant advantage when the final guidance lands.
+
+---
+
+## Related Content
+
+**Case Study:** [Biotech Startup Achieves FDA Clearance 3 Months Ahead of Schedule](/case-studies/accelerated-fda-clearance) — See how AI-assisted regulatory intelligence and submission assembly accelerated the path to FDA clearance.
+
+**Resource:** [The Complete Guide to 21 CFR Part 11 Compliance for AI Systems](/resources/21-cfr-part-11-ai-framework) — Learn how to implement SaMD AI systems within FDA-regulated environments.
+
+**Resource:** [GAMP 5 Meets AI: A Practical Validation Approach](/resources/gamp-5-ai-validation-guide) — Get validation frameworks adapted for AI/ML-enabled medical devices.
+
+**Explore:** [Regulatory Affairs Domain](/domains/regulatory) — Discover our AI platform for submission readiness, regulatory intelligence, and compliance automation.
+
+**Explore:** [Clinical Development & Operations Domain](/domains/clinical) — Learn how AI supports clinical trial operations and TMF quality oversight.
     `,
   },
   {
@@ -699,9 +753,9 @@ Vendor risk management can't be an IT-only function. Quality, Regulatory, and Su
 
 When a vendor suffers a cybersecurity incident, your response plan should be the same as if it happened in your own environment — because from a regulatory perspective, it did.
 
-## The USDM + [GxP Agents Cybersecurity Domain](/domains/cybersecurity)
+## The USDM + GxP Agents Cybersecurity Domain
 
-USDM Life Sciences has been conducting GxP cybersecurity assessments, vendor audits, and incident response support for pharmaceutical and biotech companies for over 15 years. We've been in the war room when manufacturing systems went down, when quality databases were compromised, and when third-party breaches triggered regulatory notifications.
+USDM Life Sciences has been conducting [GxP cybersecurity assessments, vendor audits, and incident response support](/domains/cybersecurity) for pharmaceutical and biotech companies for over 15 years. We've been in the war room when manufacturing systems went down, when quality databases were compromised, and when third-party breaches triggered regulatory notifications.
 
 **Our [cybersecurity domain](/domains/cybersecurity) brings AI-powered intelligence to every aspect of GxP cyber risk:**
 
@@ -724,7 +778,17 @@ If you want to assess your GxP cybersecurity posture, start with three questions
 
 The companies that answer these questions well — before the incident, before the FDA inspection, before the warning letter — will be the ones that turn cybersecurity from a cost center into a competitive moat.
 
-**Ready to move from checkbox compliance to GxP-aware threat detection?** Let's talk about how USDM's cybersecurity practice and GxP Agents' AI-powered risk intelligence can transform your security program from reactive to predictive.
+**Ready to move from checkbox compliance to GxP-aware threat detection?** Let's talk about how USDM's cybersecurity practice and [GxP Agents' AI-powered risk intelligence](/domains/cybersecurity) can transform your security program from reactive to predictive.
+
+---
+
+## Related Content
+
+**Case Study:** [Top 10 Pharma Reduces Vendor Risk Assessment from 6 Weeks to 3 Days](/case-studies/cybersecurity-vendor-risk) — See how AI-powered TPRM turned checkbox compliance into continuous intelligence.
+
+**Resource:** [GxP-Aware Vendor Cybersecurity Risk Assessment Checklist](/resources/vendor-risk-assessment-checklist) — Download our 50-point structured checklist for evaluating vendor cybersecurity posture.
+
+**Explore:** [GxP Agents Cybersecurity Domain](/domains/cybersecurity) — Learn more about our AI-driven vendor risk, threat detection, and inspection readiness capabilities.
     `,
   },
   {
@@ -1065,6 +1129,18 @@ The companies that build operational AI governance now — in 2026, before the n
 The companies that wait will be retrofitting governance onto deployed systems while trying to explain to an FDA inspector why they didn't think validation was necessary.
 
 **Ready to build AI governance that works operationally?** Let's talk about how USDM's [regulatory AI governance practice](/domains/regulatory) and [GxP Agents' built-in governance framework](/domains/quality) can help you move from policy to operations — without killing innovation.
+
+---
+
+## Related Content
+
+**Resource:** [The Complete Guide to 21 CFR Part 11 Compliance for AI Systems](/resources/21-cfr-part-11-ai-framework) — Download our 14-page practical framework for implementing AI tools within FDA-regulated environments.
+
+**Resource:** [GAMP 5 Meets AI: A Practical Validation Approach](/resources/gamp-5-ai-validation-guide) — Get our 18-page guide bridging traditional GAMP 5 validation and modern AI/ML systems.
+
+**Explore:** [Quality Domain](/domains/quality) — See how AI agents handle deviation management, CAPA workflows, and inspection readiness with built-in governance.
+
+**Explore:** [Regulatory Affairs Domain](/domains/regulatory) — Learn about AI-powered submission readiness, labeling intelligence, and regulatory compliance automation.
     `,
   },
   {
@@ -1407,9 +1483,9 @@ When your quality team spends 28% of their time on deviations instead of 55%, th
 
 **That's the shift from reactive quality to strategic quality leadership.**
 
-## The USDM + [GxP Agents Quality Domain](/domains/quality)
+## The USDM + GxP Agents Quality Domain
 
-USDM Life Sciences has conducted thousands of deviation investigations across pharmaceutical, biotech, and medical device companies. We've seen every flavor of manufacturing deviation, laboratory incident, and quality system gap.
+USDM Life Sciences has conducted [thousands of deviation investigations](/case-studies/deviation-triage-transformation) across pharmaceutical, biotech, and medical device companies. We've seen every flavor of manufacturing deviation, laboratory incident, and quality system gap.
 
 **[Our Quality domain](/domains/quality) brings AI-powered intelligence to deviation management:**
 
@@ -1436,6 +1512,18 @@ The companies that implement AI-powered deviation management in 2026 will have a
 The companies that wait will continue drowning in deviation backlogs while their competitors move to predictive quality intelligence.
 
 **Ready to cut your CAPA cycle time in half?** Let's talk about how USDM's quality operations expertise and [GxP Agents' AI-powered deviation management platform](/domains/quality) can transform your quality system from reactive to predictive.
+
+---
+
+## Related Content
+
+**Case Study:** [Top 10 Pharma Reduces Deviation Triage Time by 65%](/case-studies/deviation-triage-transformation) — See how AI-powered deviation classification transformed a drowning quality team into proactive risk managers.
+
+**Resource:** [The Complete Guide to 21 CFR Part 11 Compliance for AI Systems](/resources/21-cfr-part-11-ai-framework) — Ensure your AI-powered deviation management system meets FDA electronic records requirements.
+
+**Resource:** [GAMP 5 Meets AI: A Practical Validation Approach](/resources/gamp-5-ai-validation-guide) — Learn how to validate AI systems for quality workflows using risk-based approaches.
+
+**Explore:** [Quality Domain](/domains/quality) — Discover our full suite of AI agents for quality operations, from deviation management to inspection readiness.
     `,
   },
   {
@@ -1849,9 +1937,9 @@ When an FDA inspector reviews your batch records, they see:
 
 **That's the difference between a smooth inspection and a warning letter.**
 
-## The USDM + [GxP Agents Manufacturing Domain](/domains/manufacturing)
+## The USDM + GxP Agents Manufacturing Domain
 
-USDM Life Sciences has been supporting pharmaceutical manufacturing operations for over 20 years — from tech transfer and process validation to manufacturing investigations and regulatory remediation.
+USDM Life Sciences has been supporting [pharmaceutical manufacturing operations](/domains/manufacturing) for over 20 years — from tech transfer and process validation to [manufacturing investigations](/case-studies/batch-record-automation) and regulatory remediation.
 
 **[Our Manufacturing domain](/domains/manufacturing) brings AI-powered intelligence to batch record review:**
 
@@ -1878,6 +1966,18 @@ The companies that implement AI-assisted batch record review in 2026 will have a
 The companies that wait will continue spending 60% of QA time on mechanical batch review while their competitors move to predictive quality intelligence.
 
 **Ready to transform your batch review process?** Let's talk about how USDM's manufacturing expertise and [GxP Agents' AI-powered batch record review platform](/domains/manufacturing) can cut your review time by 80% and free your QA team to do the work that actually matters.
+
+---
+
+## Related Content
+
+**Case Study:** [Mid-Size Pharma Automates 80% of Batch Record Review](/case-studies/batch-record-automation) — See how AI-assisted review freed QA to focus on exceptions, reduced review time by 78%, and caught errors humans missed.
+
+**Resource:** [The Complete Guide to 21 CFR Part 11 Compliance for AI Systems](/resources/21-cfr-part-11-ai-framework) — Learn how to implement AI-powered batch review while maintaining electronic records compliance.
+
+**Resource:** [GAMP 5 Meets AI: A Practical Validation Approach](/resources/gamp-5-ai-validation-guide) — Get validation frameworks adapted for AI-assisted batch record review systems.
+
+**Explore:** [Manufacturing & Supply Chain Domain](/domains/manufacturing) — Discover our full suite of AI capabilities for manufacturing operations, from batch review to predictive maintenance.
     `,
   },
   {
@@ -2305,9 +2405,9 @@ When case volume grows 20%, AI-powered teams can handle it with 5-10% headcount 
 - Better profitability for product lines with high AE volumes
 - Ability to support global expansion without massive PV team scaling
 
-## The USDM + [GxP Agents Safety Domain](/domains/safety)
+## The USDM + GxP Agents Safety Domain
 
-USDM Life Sciences has been supporting pharmacovigilance operations for pharmaceutical, biotech, and medical device companies for over 15 years — from safety database implementation and ICSR processing to signal detection, aggregate reporting, and regulatory remediation.
+USDM Life Sciences has been supporting [pharmacovigilance operations](/domains/safety) for pharmaceutical, biotech, and medical device companies for over 15 years — from safety database implementation and ICSR processing to signal detection, aggregate reporting, and regulatory remediation.
 
 **[Our Safety domain](/domains/safety) brings AI-powered intelligence to pharmacovigilance:**
 
@@ -2335,6 +2435,16 @@ The companies that implement AI-powered pharmacovigilance in 2026 will have a st
 The companies that wait will continue hiring more case processors and outsourcing to meet volume — while their competitors move to predictive safety intelligence.
 
 **Ready to transform your pharmacovigilance operations?** Let's talk about how USDM's safety expertise and [GxP Agents' AI-powered pharmacovigilance platform](/domains/safety) can cut your case processing time by 60% and free your medical team to do the work that actually matters.
+
+---
+
+## Related Content
+
+**Resource:** [The Complete Guide to 21 CFR Part 11 Compliance for AI Systems](/resources/21-cfr-part-11-ai-framework) — Ensure your AI-powered pharmacovigilance workflows meet FDA electronic records requirements.
+
+**Resource:** [GAMP 5 Meets AI: A Practical Validation Approach](/resources/gamp-5-ai-validation-guide) — Learn risk-based validation approaches for AI-assisted ICSR processing and signal detection.
+
+**Explore:** [Safety & Pharmacovigilance Domain](/domains/safety) — Discover our complete AI platform for automated case intake, narrative generation, and continuous signal detection.
     `,
   },
   {
@@ -2802,6 +2912,16 @@ The companies that implement AI-powered regulatory intelligence in 2026 will hav
 The companies that wait will continue manually tracking hundreds of sources while their competitors move to predictive regulatory intelligence.
 
 **Ready to transform your regulatory intelligence?** Let's talk about how USDM's regulatory strategy expertise and [GxP Agents' AI-powered regulatory intelligence platform](/domains/regulatory) can give you real-time visibility into regulatory changes and competitive intelligence that informs your submission strategy.
+
+---
+
+## Related Content
+
+**Case Study:** [Biotech Startup Achieves FDA Clearance 3 Months Ahead of Schedule](/case-studies/accelerated-fda-clearance) — See how AI-assisted submission assembly and regulatory intelligence turned an 18-month timeline into 15.
+
+**Resource:** [The Complete Guide to 21 CFR Part 11 Compliance for AI Systems](/resources/21-cfr-part-11-ai-framework) — Ensure your AI-powered regulatory workflows meet FDA electronic records compliance requirements.
+
+**Explore:** [Regulatory Affairs Domain](/domains/regulatory) — Discover our complete AI platform for submission readiness, labeling intelligence, and continuous regulatory monitoring.
     `,
   },
 ];
