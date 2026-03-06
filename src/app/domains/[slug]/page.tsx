@@ -35,30 +35,28 @@ export default function DomainPage({ params }: { params: { slug: string } }) {
       <DomainHero domain={domain} />
 
       {/* HeyGen Avatar Video Section */}
-      {domain.slug === 'quality' && (
-        <section className="py-12 px-6 bg-slate-900">
-          <div className="max-w-4xl mx-auto text-center">
-            <ScrollReveal>
-              <h2 className="text-2xl font-bold text-white mb-6">
-                Watch: AI Agents for {domain.title}
-              </h2>
-              <div className="relative rounded-xl overflow-hidden shadow-2xl aspect-video">
-                <video
-                  className="w-full h-full object-cover"
-                  src="/videos/heygen-quality.mp4"
-                  controls
-                  playsInline
-                  preload="metadata"
-                  poster="/images/domains/quality.jpg"
-                />
-              </div>
-              <p className="text-slate-400 text-sm mt-4">
-                AI-generated overview powered by HeyGen
-              </p>
-            </ScrollReveal>
-          </div>
-        </section>
-      )}
+      <section className="py-12 px-6 bg-slate-900">
+        <div className="max-w-4xl mx-auto text-center">
+          <ScrollReveal>
+            <h2 className="text-2xl font-bold text-white mb-6">
+              Watch: AI Agents for {domain.title}
+            </h2>
+            <div className="relative rounded-xl overflow-hidden shadow-2xl aspect-video">
+              <video
+                className="w-full h-full object-cover"
+                src={`/videos/heygen-${domain.slug}.mp4`}
+                controls
+                playsInline
+                preload="metadata"
+                poster={`/images/domains/${domain.slug}.jpg`}
+              />
+            </div>
+            <p className="text-slate-400 text-sm mt-4">
+              AI-generated overview powered by HeyGen
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* Regulatory Context */}
       {domain.regulatoryContext.length > 0 && (
