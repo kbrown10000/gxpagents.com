@@ -21,6 +21,7 @@ const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Domains', href: '#', hasDropdown: true },
   { name: 'Use Cases', href: '/use-cases' },
+  { name: 'Resources', href: '/resources' },
   { name: 'FAQ', href: '/faq' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
@@ -254,6 +255,13 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Use Cases
+              </Link>
+              <Link
+                href="/resources"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-800"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Resources
               </Link>
               <Link
                 href="/faq"

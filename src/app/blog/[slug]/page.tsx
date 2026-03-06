@@ -4,6 +4,7 @@ import { blogPosts, getBlogBySlug } from '@/data/blog-posts';
 import { notFound } from 'next/navigation';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Button } from '@/components/ui/Button';
+import { ResourceCTA } from '@/components/ui/ResourceCTA';
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -201,6 +202,26 @@ export default function BlogPostPage({
                 </ScrollReveal>
               );
             })}
+
+            {/* Resource CTA - Conditionally shown based on blog category/tags */}
+            {(post.category === 'AI Governance' || post.tags.includes('ai-governance') || post.tags.includes('21-cfr-part-11')) && (
+              <ResourceCTA
+                resourceSlug="21-cfr-part-11-ai-framework"
+                resourceTitle="The Complete Guide to 21 CFR Part 11 Compliance for AI Systems"
+              />
+            )}
+            {(post.category === 'Cybersecurity' || post.tags.includes('cybersecurity') || post.tags.includes('tprm')) && (
+              <ResourceCTA
+                resourceSlug="vendor-risk-assessment-checklist"
+                resourceTitle="GxP-Aware Vendor Cybersecurity Risk Assessment Checklist"
+              />
+            )}
+            {(post.category === 'Quality' || post.tags.includes('qms') || post.slug === 'why-your-qms-is-already-obsolete') && (
+              <ResourceCTA
+                resourceSlug="gamp-5-ai-validation-guide"
+                resourceTitle="GAMP 5 Meets AI: A Practical Validation Approach"
+              />
+            )}
           </div>
         </div>
 
