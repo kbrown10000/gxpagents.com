@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -91,12 +92,15 @@ export default function RootLayout({
         <Footer />
 
         {/* ElevenLabs Conversational AI Agent */}
-        <elevenlabs-convai agent-id="agent_0601kk0gv6rkfxktjkexjkyykssk"></elevenlabs-convai>
-        <script
+        <div
+          dangerouslySetInnerHTML={{
+            __html: '<elevenlabs-convai agent-id="agent_0601kk0gv6rkfxktjkexjkyykssk"></elevenlabs-convai>',
+          }}
+        />
+        <Script
           src="https://elevenlabs.io/convai-widget/index.js"
-          async
-          type="text/javascript"
-        ></script>
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

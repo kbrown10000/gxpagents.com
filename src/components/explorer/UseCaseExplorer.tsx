@@ -42,7 +42,6 @@ export function UseCaseExplorer() {
         id: `${domain.slug}-${idx}`,
         domainSlug: domain.slug,
         domainTitle: domain.title,
-        domainSlug: domain.slug,
         domainColor: domain.color,
       }))
     );
