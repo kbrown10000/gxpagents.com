@@ -33,7 +33,7 @@ export function HeroVideo() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
       />
       {/* Gradient overlay to keep text readable */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/40 to-white" />

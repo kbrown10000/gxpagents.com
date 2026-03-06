@@ -4,7 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   title: "GxP Agents - AI Agents for Life Sciences | USDM Partnership",
@@ -52,6 +52,37 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "GxP Agents",
+              url: "https://gxpagents.com",
+              logo: "https://gxpagents.com/images/logo-mark.png",
+              description:
+                "AI agents purpose-built for regulated life sciences workflows across Quality, Regulatory, Clinical, Manufacturing, and beyond.",
+              foundingDate: "2026",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Santa Barbara",
+                addressRegion: "CA",
+                addressCountry: "US",
+              },
+              parentOrganization: {
+                "@type": "Organization",
+                name: "USDM Life Sciences",
+                url: "https://usdm.com",
+              },
+              sameAs: [
+                "https://usdm.com",
+              ],
+            }),
+          }}
+        />
+      </head>
       <body className={inter.className}>
         <Navbar />
         <main className="min-h-screen">

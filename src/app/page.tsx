@@ -1,4 +1,5 @@
 import { Hero } from '@/components/hero/Hero';
+import { TrustBar } from '@/components/home/TrustBar';
 import { ProblemStatement } from '@/components/home/ProblemStatement';
 import { DomainGrid } from '@/components/home/DomainGrid';
 import { HowItWorks } from '@/components/home/HowItWorks';
@@ -11,6 +12,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <TrustBar />
       <ProblemStatement />
       <DomainGrid />
       <HowItWorks />
