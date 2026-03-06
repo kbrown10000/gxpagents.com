@@ -34,7 +34,15 @@ The tension is perfectly human. The production schedule is urgent, visible, and 
 
 So the deviation record gets half-written. The details that would have revealed a systemic equipment issue or a process trending toward failure get lost in shorthand. And three months later, when the same deviation happens for the fifth time, the investigation team is starting from scratch because the original signal was buried.
 
-The financial reality makes this even more urgent. **Each deviation costs $5,000-$10,000** when you factor in investigation time, quality team labor, production impact, and documentation overhead. **Each CAPA costs approximately $25,000.** A company running 150 deviations per year is spending $750K-$1.5M on deviation management alone — before a single CAPA is implemented. When investigations are rushed and CAPAs fail, those costs multiply through repeat deviations, re-investigations, and regulatory remediation.
+The financial reality makes this even more urgent. The cost escalation ladder for poor deviation management is steep:
+
+- **Each deviation:** $5,000-$10,000 (investigation time, quality team labor, production impact, documentation)
+- **Each CAPA:** ~$25,000 (design, implementation, effectiveness verification)
+- **FDA 483 observation:** $250,000 to several million dollars in response preparation, remediation, production disruption, and third-party consulting
+- **Warning letter:** Millions in remediation plus stock price impact — public companies have seen 4%+ drops on announcement day alone
+- **Consent decree:** Tens of millions to $500M+ in remediation, with some companies forced into sale or bankruptcy
+
+A company running 150 deviations per year is spending $750K-$1.5M on deviation management alone — before a single CAPA is implemented. When investigations are rushed and CAPAs fail, those costs multiply through repeat deviations, re-investigations, and escalation up the enforcement ladder. The math is simple: investing in investigation quality at the deviation level is orders of magnitude cheaper than remediating a 483 or defending a warning letter.
 
 **Deviations need AI in the loop.** Not to replace human judgment — but to make sure the signal doesn't die in the rush to get back to production. AI that understands the competing priority between production urgency and investigation quality. AI that captures the complete picture in minutes instead of hours, so the operator gets back to work AND the quality system gets the data it needs to identify a failing process, equipment degradation, or facility issue before it becomes a bigger problem.
 
